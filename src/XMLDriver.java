@@ -43,7 +43,7 @@ public class XMLDriver {
 
 			conf.set("START_TAG_KEY", "<PLAY");
 			conf.set("END_TAG_KEY", "</PLAY>");
-			;
+
 			conf.set("accessControlList",accessControlList);
 			//Job job = new Job(conf, "XML Processing Processing");
 			Job job = Job.getInstance(conf, "XML Processing Processing");

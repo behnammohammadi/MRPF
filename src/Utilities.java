@@ -1,8 +1,6 @@
 import java.io.IOException;
-import java.nio.file.*;;
-/**
- * Created by behnam on 12/25/18.*******
- */
+import java.nio.file.*;
+
 public  class Utilities {
     public static  String ReadFileAsString(String path) throws IOException
     {

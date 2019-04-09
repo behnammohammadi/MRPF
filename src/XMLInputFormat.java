@@ -1,6 +1,8 @@
 
 import java.io.IOException;
 import java.util.List;
+
+import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.BlockLocation;
 import org.apache.hadoop.fs.FSDataInputStream;
 import org.apache.hadoop.fs.FileStatus;
@@ -16,9 +18,10 @@ import org.apache.hadoop.mapreduce.TaskAttemptContext;
 import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 
+
 public class XMLInputFormat extends TextInputFormat {
-	public static final String START_TAG_KEY ="<PLAYS1";// "<employee";
-	public static final String END_TAG_KEY = "</PLAYS1>";//"</employee>";
+	public static final String START_TAG_KEY ="<PLAYS";// "<employee";
+	public static final String END_TAG_KEY = "</PLAYS>";//"</employee>";
 
 	@Override
 	public RecordReader<LongWritable, Text> createRecordReader(
