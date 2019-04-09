@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE PLAYS SYSTEM "plays.dtd">
+<PLAYS authorize="false">
+
+    <PLAY name="1">
+        <FM>
+            <P authorize="true"></P>
+        </FM>
+    </PLAY>
+
+    <PLAY name="2">
+        <TITLE authorize="true"></TITLE>
+    </PLAY>
+
+</PLAYS>

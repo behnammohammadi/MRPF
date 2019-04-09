@@ -26,9 +26,7 @@ public class MyMapper extends Mapper<LongWritable, Text, Text, NullWritable> {
 
 	public void map(LongWritable key, Text value, Context context)
 			throws IOException, InterruptedException {
-
-
-		System.out.println("Start Map Task.\n");
+		System.out.println("*-*-*-*-*-*- Start Map Task *-*-*-*-*-*-");
 		System.out.println(value);
 
 		try {
@@ -36,6 +34,11 @@ public class MyMapper extends Mapper<LongWritable, Text, Text, NullWritable> {
 			String accessControlList = conf.get("accessControlList");
 			String xpathQuery = conf.get("xpathQuery");
 
+/*
+			boolean access=AccessControlProvider.CheckAccess(accessControlList,xpathQuery);
+			if(access==false)
+				return;
+*/
 			InputStream is = new ByteArrayInputStream(value.toString()
 					.getBytes());
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory
@@ -60,13 +63,16 @@ public class MyMapper extends Mapper<LongWritable, Text, Text, NullWritable> {
 					Element eElement = (Element) nNode;
 
 					String res=eElement.getTextContent();
-					System.out.println("Result: \n" + res);
-					context.write(new Text(accessControlList+"#"+res),NullWritable.get());
+					//System.out.println("Result: \n" + res);
+					context.write(new Text(res),NullWritable.get());
 				}
-				System.out.println("End Map Task.\n");
 			}
 		} catch (Exception e) {
 			 System.out.println("Error: " +e.getMessage());
+
+		}
+		finally {
+			System.out.println("*-*-*-*-*-*- End Map Task *-*-*-*-*-*-");
 		}
 	}
 
