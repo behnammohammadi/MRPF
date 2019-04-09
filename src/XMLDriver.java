@@ -41,10 +41,8 @@ public class XMLDriver {
 
 			String accessControlList = "behnam";
 
-			conf.set("START_TAG_KEY", "<PLAY");
-			conf.set("END_TAG_KEY", "</PLAY>");
-
 			conf.set("accessControlList",accessControlList);
+			conf.set("xpathQuery","/PLAYS/PLAY[@name='2']/TITLE");
 			//Job job = new Job(conf, "XML Processing Processing");
 			Job job = Job.getInstance(conf, "XML Processing Processing");
 

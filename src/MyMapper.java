@@ -48,9 +48,8 @@ public class MyMapper extends Mapper<LongWritable, Text, Text, NullWritable> {
 			XPathFactory xPathfactory = XPathFactory.newInstance();
 			XPath xpath = xPathfactory.newXPath();
 
-			XPathExpression expr = xpath.compile("/PLAYS/PLAY[@name='2']/TITLE");
+			XPathExpression expr = xpath.compile(xpathQuery);
 			NodeList nList = (NodeList) expr.evaluate(doc, XPathConstants.NODESET);
-
 
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 

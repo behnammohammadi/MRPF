@@ -57,6 +57,7 @@ public class XMLInputFormat extends TextInputFormat {
 			fsin = fs.open(fileSplit.getPath());
 			fsin.seek(start);
 			System.out.println("End Initialize Input Format.\n");
+			Configuration conf=new Configuration();
 		}
 
 		@Override
