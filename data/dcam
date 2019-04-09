@@ -1,0 +1,23 @@
+<A authorize="true">
+    <B>
+        <E>
+            <J></J>
+            <K></K>
+            <L authorize="false"></L>
+        </E>
+        <F></F>
+    </B>
+    <C></C>
+    <D authorize="false">
+        <G authorize="true">
+            <M></M>
+            <N></N>
+        </G>
+        <H></H>
+        <I>
+            <O></O>
+            <P></P>
+            <Q></Q>
+        </I>
+    </D>
+</A>
