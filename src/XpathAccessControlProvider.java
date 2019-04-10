@@ -6,10 +6,10 @@ import java.util.ArrayList;
 /**
  * Created by behnam on 4/9/19.
  */
-public class Test {
-    public static void main(String[] args) throws IOException {
-        String all=Utilities.ReadFileAsString("data/AC.data");
-        String [] lines=all.split("\\r?\\n|\\r");
+public class XpathAccessControlProvider {
+    public static boolean CheckAccess(String accessControl,String xpath) throws IOException {
+
+        String [] lines=accessControl.split("\\r?\\n|\\r");
 
         ArrayList<AccessControlDto> accessList=new ArrayList<AccessControlDto>();
         for (String line:lines) {
@@ -20,10 +20,10 @@ public class Test {
             accessList.add(new AccessControlDto(accessibility,path));
         }
 
-        System.out.println(CheckAccess(accessList,"A/D/I/Q/V"));
+       return Check(accessList,xpath);
     }
 
-    public static boolean CheckAccess(ArrayList<AccessControlDto> accessList,String xpath)
+    private static boolean Check(ArrayList<AccessControlDto> accessList,String xpath)
     {
         if (xpath.equals(""))
             return false;
@@ -38,7 +38,7 @@ public class Test {
             return  false;
 
         String newXpath =xpath.substring(0,xpath.lastIndexOf('/'));
-        return CheckAccess(accessList,newXpath);
+        return Check(accessList,newXpath);
     }
 }
 

@@ -34,11 +34,14 @@ public class MyMapper extends Mapper<LongWritable, Text, Text, NullWritable> {
 			String accessControlList = conf.get("accessControlList");
 			String xpathQuery = conf.get("xpathQuery");
 
-/*
-			boolean access=AccessControlXmlProvider.CheckAccess(accessControlList,xpathQuery);
-			if(access==false)
+
+			boolean access=XpathAccessControlProvider.CheckAccess(accessControlList,xpathQuery);
+			if(!access)
+			{
+				context.write(new Text(""),NullWritable.get());
 				return;
-*/
+			}
+
 			InputStream is = new ByteArrayInputStream(value.toString()
 					.getBytes());
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory

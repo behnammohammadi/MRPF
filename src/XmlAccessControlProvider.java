@@ -12,7 +12,7 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
 
-public class AccessControlXmlProvider {
+public class XmlAccessControlProvider {
     public static boolean CheckAccess(String data,String xpathString) throws  Exception
     {
         if(xpathString.equals(""))
