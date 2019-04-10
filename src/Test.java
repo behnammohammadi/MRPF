@@ -20,7 +20,7 @@ public class Test {
             accessList.add(new AccessControlDto(accessibility,path));
         }
 
-        System.out.println(CheckAccess(accessList,"A/B/E/L"));
+        System.out.println(CheckAccess(accessList,"A/D/I/Q/V"));
     }
 
     public static boolean CheckAccess(ArrayList<AccessControlDto> accessList,String xpath)
@@ -33,6 +33,9 @@ public class Test {
            if( item.getPath().equals(xpath))
                return item.getAccessibility();
         }
+
+        if (xpath.indexOf("/")==-1)
+            return  false;
 
         String newXpath =xpath.substring(0,xpath.lastIndexOf('/'));
         return CheckAccess(accessList,newXpath);

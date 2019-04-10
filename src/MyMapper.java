@@ -35,7 +35,7 @@ public class MyMapper extends Mapper<LongWritable, Text, Text, NullWritable> {
 			String xpathQuery = conf.get("xpathQuery");
 
 /*
-			boolean access=AccessControlProvider.CheckAccess(accessControlList,xpathQuery);
+			boolean access=AccessControlXmlProvider.CheckAccess(accessControlList,xpathQuery);
 			if(access==false)
 				return;
 */
