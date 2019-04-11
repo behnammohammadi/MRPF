@@ -14,7 +14,7 @@ public class XpathAccessControlProvider {
         ArrayList<AccessControlDto> accessList=new ArrayList<AccessControlDto>();
         for (String line:lines) {
 
-            Boolean accessibility=line.split(" ")[0].equals("Y");
+            Boolean accessibility=line.split(" ")[0].equals("+");
             String path=line.split(" ")[1];
 
             accessList.add(new AccessControlDto(accessibility,path));
