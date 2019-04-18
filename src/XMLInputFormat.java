@@ -130,7 +130,5 @@ public class XMLInputFormat extends TextInputFormat {
 				}
 			}
 		}
-
 	}
-
 }

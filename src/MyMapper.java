@@ -1,6 +1,7 @@
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.xpath.XPath;
@@ -8,6 +9,7 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 //import mrdp.logging.LogWriter;
+import Dtos.AccessControlDto;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.hadoop.conf.Configuration;
@@ -35,6 +37,14 @@ public class MyMapper extends Mapper<LongWritable, Text, Text, NullWritable> {
 			String xpathQuery = conf.get("xpathQuery");
 
 
+			ArrayList<String> xpathChildes=new ArrayList<String>();
+			String [] lines=accessControlList.split("\\r?\\n|\\r");
+
+			for (String line:lines) {
+				if(line.split(" ")[0].equals("-") && XpathHelper.isSubsequentOf(xpathQuery))
+					xpathChildes.add(line.split(" ")[1]);
+			}
+
 			boolean access=XpathAccessControlProvider.CheckAccess(accessControlList,xpathQuery);
 			if(!access)
 			{
@@ -55,7 +65,7 @@ public class MyMapper extends Mapper<LongWritable, Text, Text, NullWritable> {
 			XPath xpath = xPathfactory.newXPath();
 
 			XPathExpression expr = xpath.compile(xpathQuery);
-			NodeList nList = (NodeList) expr.evaluate(doc, XPathConstants.NODESET);
+			NodeList nList = (NodeList) expr.evaluate(doc, XPathConstants.NODESET).remove(xpathChildes);
 
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 
