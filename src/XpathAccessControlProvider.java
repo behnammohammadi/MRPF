@@ -36,6 +36,9 @@ public class XpathAccessControlProvider {
                return item.getAccessibility();
             else
            {
+               if(xpath.endsWith("*")==true)
+                xpath=xpath.substring(0,xpath.length()-2);
+
                int delimerLoc=item.getPath().lastIndexOf("/");
                int bracketLoc=item.getPath().lastIndexOf("[");
                if(bracketLoc>delimerLoc)
